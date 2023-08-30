@@ -1,8 +1,8 @@
 import { connect } from "@planetscale/database";
 
-const username = "izolmz0stzi5geoclkfv";
+const username = "bcq3btlne8z70f63tohv";
 const host = "aws.connect.psdb.cloud";
-const password = "pscale_pw_XSAFzBqmJhn6YjnCeOi41ftQJsLTSuM1AZSjg2eIfsZ";
+const password = "pscale_pw_hAzbP29wcMkuafjfOpji4J8VA5naB3HMAidgFA3AE5d";
 
 const testConcurrentFetch = async (req: Request) => {
   const config = {
