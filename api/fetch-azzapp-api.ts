@@ -1,11 +1,3 @@
-import { connect } from "@planetscale/database";
-
-// @ts-ignore
-const username = process.env.PLANETSCALE_USERNAME;
-const host = "aws.connect.psdb.cloud";
-// @ts-ignore
-const password = process.env.PLANETSCALE_PASSWORD;
-
 const testConcurrentFetchPlanetScale = async (req: Request) => {
   let currentNbFetch = 0;
   let concurrentFetch = 0;
@@ -21,12 +13,6 @@ const testConcurrentFetchPlanetScale = async (req: Request) => {
     }
   };
 
-  const config = {
-    host: host,
-    username: username,
-    password: password,
-    fetch: fetchFunc,
-  };
 
   const nbFetch = parseInt(
     new URL(req.url).searchParams.get("nbFetch") ?? "10",
@@ -36,8 +22,7 @@ const testConcurrentFetchPlanetScale = async (req: Request) => {
   try {
     await Promise.all(
       Array.from({ length: nbFetch }).map(async () => {
-        const conn = connect(config);
-        await conn.execute("select * from Profile limit 1");
+        await fetchFunc("https://test-vercel-perf.vercel.app/api/simple");
       })
     );
 
