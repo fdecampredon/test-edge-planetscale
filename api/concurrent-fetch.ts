@@ -8,13 +8,17 @@ const password = "pscale_pw_77Ofva0oGUF1z3ZPn0tZbJ3YqlPsYgLZb9gRQOnzXe4";
 
 const testConcurrentFetch = async (req: Request) => {
 
+  let currentNbFetch = 0
   let concurrentFetch = 0
   const fetchFunc = async (input: RequestInfo | URL, init?: RequestInit) => {
-    concurrentFetch++
+    currentNbFetch++
+    if (nbFetch > concurrentFetch) {
+      concurrentFetch = nbFetch
+    }
     try {
       return await fetch(input, init)
     } finally {
-      concurrentFetch--
+      currentNbFetch--
     }
   }
 
