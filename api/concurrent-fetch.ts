@@ -27,6 +27,7 @@ const testConcurrentFetch = async (req: Request) => {
 
     return new Response("ok");
   } catch (error) {
+    console.error(error, "error")
     return new Response(error.message, { status: 500 });
   }
 };
