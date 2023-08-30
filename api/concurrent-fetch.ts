@@ -4,7 +4,7 @@ const username = "izolmz0stzi5geoclkfv";
 const host = "aws.connect.psdb.cloud";
 const password = "pscale_pw_XSAFzBqmJhn6YjnCeOi41ftQJsLTSuM1AZSjg2eIfsZ";
 
-export default async (req: Request) => {
+const testConcurrentFetch = async (req: Request) => {
   const config = {
     host: host,
     username: username,
@@ -31,7 +31,9 @@ export default async (req: Request) => {
   }
 };
 
+export default testConcurrentFetch;
+
 export const config = {
   runtime: "edge",
-  regions: "fra1",
+  regions: ["fra1"],
 };
