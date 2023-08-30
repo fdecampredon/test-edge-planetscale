@@ -11,7 +11,7 @@ const testConcurrentFetch = async (req: Request) => {
     host: host,
     username: username,
     password: password,
-    fetch: require('node-fetch'),
+    fetch: globalThis.fetch,
   };
 
   const nbFetch = parseInt(
