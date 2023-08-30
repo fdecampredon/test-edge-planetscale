@@ -17,7 +17,6 @@ const testConcurrentFetch = async (req: Request) => {
     new URL(req.url).searchParams.get("nbFetch") ?? "10",
     10
   );
-  
   console.log("nbFetch", nbFetch);
   try {
     await Promise.all(
