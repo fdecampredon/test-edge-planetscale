@@ -15,8 +15,10 @@ const testConcurrentFetch = async (req: Request) => {
   };
 
   const nbFetch = parseInt(
-    new URL(req.url).searchParams.get("nbFetch") ?? "10"
+    new URL(req.url).searchParams.get("nbFetch") ?? "10",
+    10
   );
+  console.log('nbFetch', nbFetch)
   try {
     await Promise.all(
       Array.from({
@@ -27,6 +29,7 @@ const testConcurrentFetch = async (req: Request) => {
       })
     );
 
+    console.log("ok");
     return new Response("ok");
   } catch (error) {
     console.error(error, "error")
