@@ -7,10 +7,22 @@ const password = "pscale_pw_77Ofva0oGUF1z3ZPn0tZbJ3YqlPsYgLZb9gRQOnzXe4";
 
 
 const testConcurrentFetch = async (req: Request) => {
+
+  let concurrentFetch = 0
+  const fetchFunc = async (input: RequestInfo | URL, init?: RequestInit) => {
+    concurrentFetch++
+    try {
+      return await fetch(input, init)
+    } finally {
+      concurrentFetch--
+    }
+  }
+
   const config = {
     host: host,
     username: username,
     password: password,
+    fetch: fetchFunc
   };
 
   const nbFetch = parseInt(
@@ -28,10 +40,10 @@ const testConcurrentFetch = async (req: Request) => {
       })
     );
 
-    console.log("ok");
+    console.log("ok with concurrent fetch : ",concurrentFetch);
     return new Response("ok");
   } catch (error) {
-    console.error(error, "error")
+    console.error(error, "error with concurrent fetch : ",concurrentFetch)
     return new Response(error.message, { status: 500 });
   }
 };
