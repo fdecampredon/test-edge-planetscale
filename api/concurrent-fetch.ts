@@ -4,12 +4,14 @@ const username = "z87vy349nxi78yr8dbk3";
 const host = "aws.connect.psdb.cloud";
 const password = "pscale_pw_77Ofva0oGUF1z3ZPn0tZbJ3YqlPsYgLZb9gRQOnzXe4";
 
+
+
 const testConcurrentFetch = async (req: Request) => {
   const config = {
     host: host,
     username: username,
     password: password,
-    fetch: globalThis.fetch,
+    fetch: require('node-fetch'),
   };
 
   const nbFetch = parseInt(
