@@ -33,8 +33,7 @@ const testConcurrentFetchPlanetScale = async  (
   };
 
   const nbFetch = parseInt(
-    new URL(req.url).searchParams.get("nbFetch") ?? "10",
-    10
+    req.query.nbFetch as string ?? "10",
   );
   console.log("nbFetch", nbFetch);
   try {
