@@ -6,6 +6,7 @@
   "license": "MIT",
   "dependencies": {
     "@planetscale/database": "^1.11.0",
-    "@vercel/node": "^3.0.3"
+    "@vercel/node": "^3.0.3",
+    "p-limit": "^4.0.0"
   }
 }
